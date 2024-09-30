@@ -151,7 +151,7 @@ class Favourites: ObservableObject {
 
     init() {
         favouriteRadioStations = [] // Initialize with an empty set
-        load()  // Load saved favorites from UserDefaults on init
+        load()
     }
 
     func contains(_ station: RadioStationElement) -> Bool {
@@ -159,17 +159,15 @@ class Favourites: ObservableObject {
     }
 
     func add(_ station: RadioStationElement) {
-        var stationToAdd = station
-        stationToAdd.isLiked = true // Set isLiked to true when adding
-        favouriteRadioStations.insert(stationToAdd)
+        favouriteRadioStations.insert(station)
         objectWillChange.send()
         print("Added 1 station to favourites: \(favouriteRadioStations.count)")
-        save()  // Persist data after adding a station
+        save()
     }
 
     func remove(_ station: RadioStationElement) {
-        var stationToRemove = station
-        favouriteRadioStations.remove(stationToRemove)
+
+        favouriteRadioStations.remove(station)
         objectWillChange.send()
         print("Removed 1 station from favourites: \(favouriteRadioStations.count)")
         save()

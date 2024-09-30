@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct DetailView: View {
-    @State var radio: RadioStationElement  // Radio station passed from ContentView
-    @EnvironmentObject var favourites: Favourites  // Use @EnvironmentObject to access the shared Favourites instance
-
+    @State var radio: RadioStationElement
+    @EnvironmentObject var favourites: Favourites 
     var body: some View {
         VStack {
             Text(radio.title)
@@ -20,11 +19,9 @@ struct DetailView: View {
             let url = URL(string: radio.logo)
             ImageView(url: url)
                 .frame(width: 150, height: 150)
-                .clipShape(Circle())  // Larger circular image
+                .clipShape(Circle())
 
-            // Button for toggling like status
             Button(action: toggleLikeStatus) {
-                // Check if the station is already in favorites
                 Image(systemName: favourites.contains(radio) ? "heart.fill" : "heart")
                     .resizable()
                     .frame(width: 24, height: 24)
@@ -50,11 +47,9 @@ struct DetailView: View {
     private func toggleLikeStatus() {
         if favourites.contains(radio) {
             favourites.remove(radio)
-            radio.isLiked = false
         } else {
             favourites.add(radio)  // Add to favorites
             
-            radio.isLiked = true
         }
     }
 }

@@ -15,10 +15,7 @@ struct FavouritesView: View {
         NavigationView {
             VStack {
                 
-                Button("chec"){
-                    favourites.objectWillChange.send()
-                    print(favourites.favouriteRadioStations.count)
-                }
+            
                 if favourites.favouriteRadioStations.isEmpty {
                     Text("No radio stations liked.")
                         .font(.headline)
