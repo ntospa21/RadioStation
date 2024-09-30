@@ -44,10 +44,9 @@ struct DetailView: View {
                 PlayButtonView(url: audioUrl)
             }
         }
-        .navigationTitle("Details")
+        .navigationTitle("Detail")
     }
 
-    // Toggle the like status of the radio station
     private func toggleLikeStatus() {
         if favourites.contains(radio) {
             favourites.remove(radio)
